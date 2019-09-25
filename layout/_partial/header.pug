@@ -1,0 +1,17 @@
+header.c-header
+  .o-grid
+    .o-grid__col.o-grid__col--full
+      .c-header__inner
+        .o-grid
+          .o-grid__col.o-grid__col--3-4-s
+            .c-logo.u-text-left
+              a.c-logo__link(href=url_for('.'))=config.title
+          .o-grid__col.o-grid__col--1-4-s
+            label.js-off-canvas-toggle.c-off-canvas-toggle(aria-label="Toggle navigation")
+              span.c-off-canvas-toggle__icon
+          .o-grid__col.o-grid__col--1-4-s
+            .c-off-canvas-content
+              label.js-off-canvas-toggle.c-off-canvas-toggle.c-off-canvas-toggle--close
+                span.c-off-canvas-toggle__icon
+              ul.c-nav.o-plain-list
+                include navigation.pug
