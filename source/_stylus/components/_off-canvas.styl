@@ -85,17 +85,23 @@ body {
 .c-off-canvas-container {
   transform: translate3d(0, 0, 0);
   transition: transform $global-transition cubic-bezier(.16, .68, .43, .99);
-
+  &:after{
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+        //  display: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all .4s;
+    z-index: -1
+  }
   &.is-active {
     transform: translate3d(- $off-canvas-width, 0, 0);
-
     &:after {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      content: '';
+      // transition: all .3s;
+      z-index: 1
       background-color: rgba(0, 0, 0, .2);
     }
   }
