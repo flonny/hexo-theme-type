@@ -9,10 +9,10 @@ block title
 block content
   .o-wrapper
     .o-grid
-      for post in page.posts.toArray()
+      each post,index   in page.posts.toArray()
         include _partial/helpers.pug
         .o-grid__col
-          a.c-post-card(href=url_for(post.path))
+          a.c-post-card(href=url_for(post.path),class=(index===0)?'c-post-card--first':(index===config.index_generator.per_page-1)?'c-post-card--last':'')
               h3.c-post-card__title
                 +title(post)
               .c-post-card__excerpt.u-font-medium
