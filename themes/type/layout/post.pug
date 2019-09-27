@@ -1,0 +1,18 @@
+extends base
+
+block title
+  title= page.title + ' | ' + config.title
+
+block content
+  .o-wrapper
+    .o-grid
+      .o-grid__col
+        article.c-post(itemscope=true,itemtype='http://schema.org/BlogPosting')
+          h1.c-post__title.u-text-center=page.title
+          time.c-post__date(itemprop='datePublished')=date(page.date,  'MMM Do YYYY')
+          .c-content(itemprop='articleBody')
+            != page.content
+          if page.tags
+            .c-tags
+              for tag in page.tags.toArray()
+                a(href=url_for(tag.path))=tag.name

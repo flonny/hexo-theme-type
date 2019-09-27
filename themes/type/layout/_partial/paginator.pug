@@ -1,0 +1,12 @@
+if page.prev
+  .o-grid__col.o-grid__col--2-4-s
+    a.c-pagination(href=url_for(page.prev_link ? page.prev_link : page.prev.path))
+      .c-pagination__icon.c-pagination__icon--prev(data-icon='ei-chevron-left')
+      span.c-pagination__text.c-pagination__text--prev="Previous"
+      !=(page.prev_link||page.prev.path)||'PAGE/'+page.prev+'/'
+if page.next
+  .o-grid__col.o-grid__col--end.o-grid__col--2-4-s.u-text-right
+    a.c-pagination(href=url_for(page.next_link ? page.next_link : page.next.path))
+      !=page.next_link
+      span.c-pagination__text.c-pagination__text--next="Next"
+      .c-pagination__icon.c-pagination__icon--next(data-icon='ei-chevron-right')

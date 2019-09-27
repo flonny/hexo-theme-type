@@ -1,0 +1,29 @@
+extends base
+
+block title
+  if config.subtitle
+    title= config.title + ' | ' + config.subtitle
+  else
+    title= config.title
+
+block content
+  .o-wrapper
+    .o-grid
+      each post,index   in page.posts.toArray()
+        include _partial/helpers.pug
+        .o-grid__col
+          a.c-post-card(href=url_for(post.path),class=(index===0)?'c-post-card--first':(index===config.index_generator.per_page-1)?'c-post-card--last':'')
+              h3.c-post-card__title
+                +title(post)
+              .c-post-card__excerpt.u-font-medium
+                  if post.description
+                    !=post.description
+                  else if post.excerpt
+                    !=post.excerpt
+                  else if post.content
+                    != strip_html(post.content).substring(0, 150)+'...'
+              span.c-post-card__date=date(post.date,  'MMM Do YYYY')
+    .o-grid
+      include _partial/paginator.pug
+
+                      
